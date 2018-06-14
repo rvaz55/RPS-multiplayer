@@ -2,29 +2,60 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>RPS Multiplayer</title>
-    <!--This is the firebase script-->
     <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
-        <script>
-                // Initialize Firebase
-                var config = {
-                    apiKey: "AIzaSyDvDVt_C5eJo5lp26Xmoax2nqkHtdElW10",
-                    authDomain: "rps-multiplayer-12a24.firebaseapp.com",
-                    databaseURL: "https://rps-multiplayer-12a24.firebaseio.com",
-                    projectId: "rps-multiplayer-12a24",
-                    storageBucket: "rps-multiplayer-12a24.appspot.com",
-                    messagingSenderId: "56835355614"
-                };
-                firebase.initializeApp(config);
-        </script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" media="screen" href="./Assets/CSS/styles.css" />
- 
-</head>
-<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="./Assets/Javascript/app.js"></script>
+</head>
+
+<body>
+    <!--this div contains all the app content --> 
+    <div class="container-fluid" id ="divBody">
+        <!--This section if for the NavBar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a href="#" class="navbar-brand">RPS Multiplayer</a>
+            </nav>
+
+         <!--This is where the messages will appear-->
+        <div class="row d-flex justify-content-center" id="messagesDiv">
+            <p id="msg1" class="row msgParaEl">Hello you are player x!</p>
+            </div>
+
+        <div class="row d-flex justify-content-center" id="messagesDiv">
+                <p id="msg1" class="row msgParaEl">It's your turn!</p>
+                </div>
+
+        <!--This is for three main boxes-->
+        <div class="row d-flex justify-content-center" id="playerBoxesDiv">
+                
+                <div class="col boxes text-center playerBoxes" id="bx1"> 
+                        <p>Player 1: </p>
+                        </div>
+
+                <div class="col boxes text-center" id="bx2"> 
+                        <p>Battle Arena!</p>
+                        </div>
+
+                <div class="col boxes text-center playerBoxes" id="bx3"> 
+                        <p>Player 2: </p>
+                        </div>
+             
+            </div>
+
+        <!--This is for the chat box-->
+        <div class="row d-flex justify-content-center" id="messagesDiv">
+                    <p id="msg1" class="row msgParaEl">Chat box goes here</p>
+                    </div>
+
+
+        </div>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <script src ="./Assets/Javascript/app.js"></script>
+       
 </body>
+
 </html>
