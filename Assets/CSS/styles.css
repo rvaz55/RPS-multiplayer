@@ -1,3 +1,12 @@
 .boxes {
     border: 1px dashed black
 }
+
+#arenaText{
+    font-size: 24px
+}
+
+.players{
+    font-size: 20px
+
+}

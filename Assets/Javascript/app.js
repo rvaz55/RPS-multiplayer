@@ -31,23 +31,27 @@ database.ref().on("value", function(snapshot) {
 //from the website and then send them to the firebase database
 // if (snapshot.child("p1SelectionFB").val() === "" && snapshot.child("p1SelectionFB").val() === ""){
 
-$(".playerBoxes").on("click", ".rpsBtns", function (){
+$(".playerBoxes").on("click", ".rpsBtns", function (event){
     var term = this.innerHTML
    console.log(term)
-    fillingAnswerArrs(term)
+    fillingAnswerArrs(term, event)
     ;
 })
 
-function fillingAnswerArrs(term){
+function fillingAnswerArrs(term, event){
         if (p1Selection.length === 0){
         p1Selection.pop()
         p1Selection.push(term)
         console.log("this is p1Selection: " + p1Selection)
         //setting the p1Selection value in Firebase
+        //note you can also you the .push() will not overwrite
+        //.set() will overwrite the data in Firebase
         database.ref().update({
             p1SelectionFB: p1Selection
           })
-       
+
+          //how do i disable these buttons after selection??
+         // $("#bx1").attr('disabled','disabled')
         } 
         else {
                 p2Selection.pop()
@@ -55,29 +59,58 @@ function fillingAnswerArrs(term){
                 database.ref().update({
                     p2SelectionFB: p2Selection
           })
+          //The p2Selection needs to be 'locked' or 'disabled' (ei make sure it's value
+            //cant be changed) until the game has been finished (ie the selections 
+            //have been made and compared correctly).... 
+            $(".rpsBtns").attr('disabled','disabled')
           console.log("this is p2Selection: " + p2Selection)
         }
 compareSelections();
 };
-//The p2Selection need to be 'locked' (ei make sure it's value
-//cant be changed) until the game has been reset.... need to write code for this
 
-//}
 
 function compareSelections(){
-if (p1Selection == "Rock" && p2Selection == "Scissors"){
-    console.log("players have selected their options!")
-    console.log("p1 has selected rock! p1 wins!")
+if (p1Selection == "Rock"){
 
-    }  else {
-        console.log("this is the last line of the compareSelections() function")
+    if (p2Selection == "Paper"){
+        $("#arenaText").text("Player2 has won!!!")
     }
+    if (p2Selection == "Scissors"){
+        $("#arenaText").text("Player1 has won!!!")
+    }
+    if (p2Selection == "Rock"){
+        $("#arenaText").text("Players are tied! Play again to break the tie")
+    }
+
+    }  
+
+if (p1Selection == "Paper"){
     
-      // here I would write the code to compare the values in the arrary
+        if (p2Selection == "Paper"){
+            $("#arenaText").text("Players are tied! Play again to break the tie")
+        }
+        if (p2Selection == "Scissors"){
+            $("#arenaText").text("Player2 has won!!!")
+        }
+        if (p2Selection == "Rock"){
+            $("#arenaText").text("Player2 has won!!!")
+        }
+    
+        }  
 
-
-
-
+if (p1Selection == "Scissors"){
+    
+            if (p2Selection == "Paper"){
+                $("#arenaText").text("Player1 has won!!!")
+            }
+            if (p2Selection == "Scissors"){
+                $("#arenaText").text("Players are tied! Play again to break the tie")
+            }
+            if (p2Selection == "Rock"){
+                $("#arenaText").text("Player2 has won!!!")
+            }
+        
+            }  
 
 }
 })
